@@ -101,7 +101,7 @@ print("I named my computer " + Winfo.software.devicename())
 print("I'm logged in as " + Winfo.software.username())
 ```
 ## Questions you might have:
-- Q: Is this on PyPi?, A: Current not but soon
+- Q: Is this on PyPi?, A: Currently not, but soon
 - Q: How can I install this then?, A: By cloning the repo in to this directory "C:\Users\USERNAME\AppData\Local\Programs\Python\Python311\Lib"
 - Q: MacOS/Linux/BSD Support? A: Windows-only.
 - Q: What can I do with the code? A: Read the license (CC BY-SA 4.0)
