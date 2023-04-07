@@ -56,9 +56,131 @@ Windows makes it really easy to get System Information.
 So, it's currently not worth it and there's a reason it's called "Winfo" at the time.
 """
 
-import cpu
-import disk
-import gpu
-import memory
-import software
+from subprocess import check_output
+
+class cpu:
+  def getbrandname():
+    raw = check_output(["wmic", "cpu", "get", "name"])
+    rawdecoded = raw.decode()
+    getname = rawdecoded.strip("Name").rstrip("\n").replace("\n", "")
+    return getname
+
+  def getrealname():
+    raw = check_output(["wmic", "cpu", "get", "caption"])
+    rawdecoded = raw.decode()
+    getcaption = rawdecoded.strip("Caption").rstrip("\n").replace("\n", "")
+    return getcaption
+
+  def maxclockspeed():
+    raw = check_output(["wmic", "cpu", "get", "MaxClockSpeed"])
+    rawdecoded = raw.decode()
+    getmax = rawdecoded.strip("MaxClockSpeed").rstrip("\n").replace("\n", "")
+    return getmax
+
+  def cores():
+    raw = check_output(["wmic", "cpu", "get", "NumberOfCores"])
+    rawdecoded = raw.decode()
+    getcores = rawdecoded.strip("NumberOfCores").rstrip("\n").replace("\n", "")
+    return int(getcores)
+
+  def threads():
+    raw = check_output(["wmic", "cpu", "get", "ThreadCount"])
+    rawdecoded = raw.decode()
+    getthreads = rawdecoded.strip("ThreadCount").rstrip("\n").replace("\n", "")
+    return int(getthreads)
+  
+class gpu:
+  def getname():
+    raw = check_output(["wmic", "path", "win32_VideoController", "get", "name"])
+    rawdecoded = raw.decode()
+    getname = rawdecoded.strip("Name").rstrip("\n").replace("\n", "")
+    return getname
+  
+class memory:
+  def getmanufacturer():
+    raw = check_output(["wmic", "cpu", "get", "caption"])
+    rawdecoded = raw.decode()
+    getmanu = rawdecoded.strip("Caption").rstrip("\n").replace("\n", "")
+    return getmanu
+
+  def getcapacityMB():
+    raw = check_output(["wmic", "computersystem", "get", "totalphysicalmemory"])
+    rawdecoded = raw.decode().lstrip("TotalPhysicalMemory").rstrip("\n")
+    getcapMB = int(rawdecoded) / 1024 ** 2
+    return getcapMB
+
+  def getcapacityGB():
+    raw = check_output(["wmic", "computersystem", "get", "totalphysicalmemory"])
+    rawdecoded = raw.decode().lstrip("TotalPhysicalMemory").rstrip("\n")
+    getcapGB = int(rawdecoded) / 1024 ** 3
+    return getcapGB
+
+  def getSpeed():
+    raw = check_output(["wmic", "memorychip", "get", "Speed"])
+    rawdecoded = raw.decode().lstrip("Speed").rstrip("\n")
+    getspeed = rawdecoded.replace("\n", "")
+    return int(rawdecoded)
+  
+class disk:
+  def listall():
+    raw = check_output(["wmic", "diskdrive", "get", "Caption"], shell=True)
+    rawdecoded = raw.decode()
+    disks = [line.replace("Caption", "").strip() for line in rawdecoded.split("\n")[1:] if line.strip() != ""]
+    return disks
+
+  def getsize(index = 0):
+    raw = check_output(["wmic", "diskdrive", "get", "Size"], shell=True)
+    rawdecoded = raw.decode()
+    size = rawdecoded.replace("Size", "")
+    sizeaslist = size.split("\n")
+    c = 0
+    for i in sizeaslist:
+        if index + 1 == c:
+            size = i
+            break
+        else:
+            c = c + 1
+    if size == "\r\r":
+        raise IndexError("Disk Index invalid.")
+    elif index < 0:
+        raise IndexError("Disk Index invalid.")
+    elif size == "":
+        raise IndexError("Disk Index invalid.")
+    elif size == "           \r\r":
+        raise IndexError("Disk Index invalid.")
+    return int(size)
+  
+class software:
+  def version():
+    raw = check_output(["ver"], shell=True)
+    rawdecoded = raw.decode()
+    winversion = rawdecoded.replace("Microsoft Windows [Version ", "").replace("]", "").replace("\n", "")
+    return winversion
+
+  def system():
+    if software.version().startswith("10.0.2"):
+        return "11" # because Windows 11 version says 10.0.20 or higher (Microsoft was kinda lazy)
+    elif software.version().startswith("10.0"):
+        return "10"
+    elif software.version().startswith("8.1"):
+        return "8.1"
+    elif software.version().startswith("8"):
+        return "8"
+    elif software.version().startswith("7"):
+        return "7"
+    else:
+        return None # None means not found
+    
+  def devicename():
+    raw = check_output(["wmic", "cpu", "get", "SystemName"])
+    rawdecoded = raw.decode()
+    getdevname = rawdecoded.strip("SystemName").rstrip("\n").replace("\n", "")
+    return getdevname
+
+  def username():
+    raw = check_output(["echo", "%USERNAME%"], shell=True)
+    rawdecoded = raw.decode()
+    getusername = rawdecoded.replace("\n", "")
+    return getusername
+
 
