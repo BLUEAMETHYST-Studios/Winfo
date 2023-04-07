@@ -6,9 +6,8 @@ with open("README.md", "r") as f:
     
 setup(
     name="Winfo",
-    version="0.0.1.2",
+    version="0.0.1.3",
     author="BLUEAMETHYST Studios",
-    author_email="simon.schoeneberg@t-online.de",
     description="Get information about your windows system",
     long_description_content_type="text/markdown",
     long_description=readme,

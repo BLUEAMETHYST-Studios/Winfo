@@ -16,7 +16,7 @@ import Winfo
 
 print("I have an " + Winfo.cpu.getbrandname())
 print("It's real name is " + Winfo.cpu.getrealname())
-print("This monster works at " + Winfo.cpu.MaxClockSpeed())
+print("This monster works at " + Winfo.cpu.MaxClockSpeed() + " Ghz")
 print("It has" + str(Winfo.cpu.cores()) + " Cores and " + str(Winfo.cpu.threads) + " Threads")
 ```
 
@@ -102,7 +102,7 @@ print("I'm logged in as " + Winfo.software.username())
 ```
 ## Questions you might have:
 
-- Q: How can I install this library?, A: pip install Winfo
+- Q: How can I install this library? A: pip install Winfo
 - Q: MacOS/Linux/BSD Support? A: Windows-only.
 - Q: What can I do with the code? A: Read the license (CC BY-SA 4.0)
 
