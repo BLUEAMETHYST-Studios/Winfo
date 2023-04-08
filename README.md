@@ -23,6 +23,7 @@ print("It has" + str(Winfo.cpu.cores()) + " Cores and " + str(Winfo.cpu.threads)
 ### GPU Information
 
 - Get Brandname of GPU
+- Get Refresh Rate
 
 ```Python
 import Winfo
