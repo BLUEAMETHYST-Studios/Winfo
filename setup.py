@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
     
 setup(
     name="Winfo",
-    version="0.0.1.4",
+    version="0.0.2",
     author="BLUEAMETHYST Studios",
     description="Get information about your windows system",
     long_description_content_type="text/markdown",

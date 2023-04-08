@@ -154,7 +154,39 @@ class disk:
     elif size == "           \r\r":
         raise IndexError("Disk Index invalid.")
     return int(size)
+
+class ethernet:
+  def macaddr():
+    """
+    DISCLAIMER
+    
+    May not be true!
+    
+    If it isn't true, please don't contact us, because this function basically gets it from the getmac-Command in Windows.
+    So this basically relies on Windows' Shell.
+    
+    """
+    raw = check_output(["getmac"], shell=True)
+    mac = raw.decode().strip().split("\n")[2].split()[0]
+    return mac
+  def listadapters():
+    raw = check_output(["wmic", "nic", "get", "name"], shell=True)
+    rawdecoded = raw.decode()
+    maclist = [line.replace("Caption", "").strip() for line in rawdecoded.split("\n")[1:] if line.strip() != ""]
+    return maclist
   
+class motherboard:
+  def getname():
+    raw = check_output(["wmic", "baseboard", "get", "product"], shell=True)
+    rawdecoded = raw.decode()
+    getboard = rawdecoded.replace("Product", "").replace("\n", "")
+    return getboard
+  def getmanufacturer():
+    raw = check_output(["wmic", "baseboard", "get", "manufacturer"], shell=True)
+    rawdecoded = raw.decode()
+    getmanu = rawdecoded.replace("Manufacturer", "").replace("\n", "")
+    return getmanu
+    
 class software:
   def version():
     raw = check_output(["ver"], shell=True)
@@ -187,5 +219,3 @@ class software:
     rawdecoded = raw.decode()
     getusername = rawdecoded.replace("\n", "")
     return getusername
-
-

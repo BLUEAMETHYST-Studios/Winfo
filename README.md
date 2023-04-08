@@ -85,6 +85,55 @@ Disk 1
 Disk 2
 
 ```
+### Ethernet Information (Adapters)
+
+- Get MAC Address (Please read disclaimer, which can be found in the source code of this project)
+- List all recognized Network Adapters
+
+```Python
+import Winfo
+
+print("My MAC Address is: " + Winfo.ethernet.macaddr())
+print("List of all Network Adapters as a Python list: " + Winfo.ethernet.listadapters())
+```
+
+- Like with the Disklist, you can make the list returned from Winfo.ethernet.listadapters() way prettier by doing this:
+
+```Python
+import Winfo
+
+prettylist = ""
+
+for i in Winfo.ethernet.listadapters():
+    prettylist = prettylist + i + "\n"
+
+print(prettylist)
+```
+- Instead of looking like this when printed:
+
+```
+['Adapter 1', 'Adapter 2', 'Adapter 3']
+```
+
+- It would now look like this:
+
+```
+Adapter 1
+Adapter 2
+Adapter 3
+
+```
+
+### Motherboard Information
+
+- Get Brandname of your Motherboard
+- Get Manufacturer of your Motherboard
+
+```Python
+import Winfo
+
+print("My Motherboard is an " + Winfo.motherboard.getname() + " , made by " + Winfo.motherboard.getmanufacturer())
+```
 
 ### Software Information
 
