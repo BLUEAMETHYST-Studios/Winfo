@@ -29,7 +29,7 @@ https://BLUEAMETHYST-Studios/Winfo
   ████▓▓▓▓████              
     ████████                
 
-B R E A D
+B      R      E      A      D
 """
 # ADDITIONAL INFORMATION
 # ======================
@@ -99,7 +99,7 @@ class gpu:
     raw = check_output(["wmic", "path", "win32_VideoController", "get", "CurrentRefreshRate"], shell=True)
     rawdecoded = raw.decode()
     getrate = rawdecoded.replace("CurrentRefreshRate", "").replace("\n", "")
-    return getrate
+    return int(getrate)
   
 class memory:
   def getmanufacturer():
@@ -112,13 +112,13 @@ class memory:
     raw = check_output(["wmic", "computersystem", "get", "totalphysicalmemory"])
     rawdecoded = raw.decode().lstrip("TotalPhysicalMemory").rstrip("\n")
     getcapMB = int(rawdecoded) / 1024 ** 2
-    return getcapMB
+    return int(getcapMB)
 
   def getcapacityGB():
     raw = check_output(["wmic", "computersystem", "get", "totalphysicalmemory"])
     rawdecoded = raw.decode().lstrip("TotalPhysicalMemory").rstrip("\n")
     getcapGB = int(rawdecoded) / 1024 ** 3
-    return getcapGB
+    return int(getcapGB)
 
   def getSpeed():
     raw = check_output(["wmic", "memorychip", "get", "Speed"])
@@ -169,6 +169,7 @@ class ethernet:
     raw = check_output(["getmac"], shell=True)
     mac = raw.decode().strip().split("\n")[2].split()[0]
     return mac
+  
   def listadapters():
     raw = check_output(["wmic", "nic", "get", "name"], shell=True)
     rawdecoded = raw.decode()

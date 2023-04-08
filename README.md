@@ -28,6 +28,7 @@ print("It has" + str(Winfo.cpu.cores()) + " Cores and " + str(Winfo.cpu.threads)
 import Winfo
 
 print("My GPU is the " + Winfo.gpu.getname())
+print("I like my " + Winfo.gpu.getRefreshRate() + " Hz")
 ```
 
 ### Memory Information
