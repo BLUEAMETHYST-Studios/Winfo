@@ -10,6 +10,7 @@ List of all features:
 - Get Maximum Clock Speed
 - Get amount of cores
 - Get amount of threads
+- Get Architecture
 
 ```Python
 import Winfo
