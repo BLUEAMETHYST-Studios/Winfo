@@ -89,6 +89,12 @@ class cpu:
     getthreads = rawdecoded.strip("ThreadCount").rstrip("\n").replace("\n", "")
     return int(getthreads)
   
+  def architecture():
+    raw = check_output(["echo", "%PROCESSOR_ARCHITECTURE%"], shell=True)
+    rawdecoded = raw.decode()
+    cpuarch = rawdecoded.replace("\n", "")
+    return cpuarch
+  
 class gpu:
   def getname():
     raw = check_output(["wmic", "path", "win32_VideoController", "get", "name"])
