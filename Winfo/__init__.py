@@ -12,7 +12,7 @@ You can get information about your:
 - Software (Operating System)
 
 The source code is available at our Github:
-https://BLUEAMETHYST-Studios/Winfo
+https://github.com/BLUEAMETHYST-Studios/Winfo
 
               ██████████    
             ████▒▒▒▒██████  
