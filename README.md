@@ -17,7 +17,7 @@ import Winfo
 
 print("I have an " + Winfo.cpu.getbrandname())
 print("It's real name is " + Winfo.cpu.getrealname())
-print("This monster works at " + Winfo.cpu.MaxClockSpeed() + " Ghz")
+print("This monster works at " + Winfo.cpu.maxclockspeed() + " Ghz")
 print("It has" + str(Winfo.cpu.cores()) + " Cores and " + str(Winfo.cpu.threads) + " Threads")
 print("CPU Architecture: " + Winfo.cpu.architecture())
 ```

@@ -1,7 +1,7 @@
 from subprocess import check_output
 
 def getmanufacturer():
-    raw = check_output(["wmic", "cpu", "get", "caption"])
+    raw = check_output(["wmic", "memorychip", "get", "caption"])
     rawdecoded = raw.decode()
     getmanu = rawdecoded.strip("Caption").rstrip("\n").replace("\n", "")
     return getmanu
@@ -16,10 +16,10 @@ def getcapacityGB():
     raw = check_output(["wmic", "computersystem", "get", "totalphysicalmemory"])
     rawdecoded = raw.decode().lstrip("TotalPhysicalMemory").rstrip("\n")
     getcapGB = int(rawdecoded) / 1024 ** 3
-    return int(getcapGB)
+    return float(getcapGB)
 
 def getSpeed():
     raw = check_output(["wmic", "memorychip", "get", "Speed"])
     rawdecoded = raw.decode().lstrip("Speed").rstrip("\n")
     getspeed = rawdecoded.replace("\n", "")
-    return int(rawdecoded)
+    return float(rawdecoded)

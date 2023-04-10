@@ -7,15 +7,16 @@ def version():
     return winversion
 
 def system():
-    if version().startswith("10.0.2"):
+    versionformatted = version().replace("\r", "")
+    if versionformatted.startswith("10.0.2"):
         return "11" # because Windows 11 version says 10.0.20 or higher (Microsoft was kinda lazy)
-    elif version().startswith("10.0"):
+    elif versionformatted.startswith("10.0"):
         return "10"
-    elif version().startswith("8.1"):
+    elif versionformatted.startswith("8.1"):
         return "8.1"
-    elif version().startswith("8"):
+    elif versionformatted.startswith("8"):
         return "8"
-    elif version().startswith("7"):
+    elif versionformatted.startswith("7"):
         return "7"
     else:
         return None # None means not found
