@@ -20,6 +20,18 @@ def getcapacityGB():
 
 def getSpeed():
     raw = check_output(["wmic", "memorychip", "get", "Speed"])
-    rawdecoded = raw.decode().lstrip("Speed").rstrip("\n")
-    getspeed = rawdecoded.replace("\n", "")
-    return float(rawdecoded)
+    rawdecoded = raw.decode().replace("Speed", "").strip()
+    speedlist = [int(speed) for speed in rawdecoded.split("\n") if speed.isdigit()]
+    if not speedlist:
+        return None
+    else:
+        return max(speedlist)
+    
+def getSpeedAll():
+    raw = check_output(["wmic", "memorychip", "get", "Speed"])
+    rawdecoded = raw.decode().strip().split('\r\n')
+    speeds = [int(speed) for speed in rawdecoded[1:] if speed.strip().isdigit()]
+    return speeds
+    
+
+print(getSpeed())

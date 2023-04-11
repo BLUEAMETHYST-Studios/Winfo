@@ -47,6 +47,34 @@ import Winfo
 print("My Memory is from " + Winfo.memory.getmanufacturer())
 print("I've " + Winfo.memory.getcapacityMB() + " of memory or in GB: " + Winfo.memory.getcapacityGB())
 print("My memory works at " + Winfo.memory.getSpeed() + " Mhz")
+print("All my memory's Speed in a Python list: " + Winfo.memory.getSpeedAll())
+```
+
+- If you want to list all Speed values in a prettier way, try this:
+
+```Python
+import Winfo
+
+prettylist = ""
+
+for i in Winfo.memory.getSpeedAll():
+    prettylist = prettylist + i + "\n"
+
+print(prettylist)
+```
+
+- Instead of looking like this when printed:
+
+```
+[3000, 3000]
+```
+
+- It would now look like this:
+
+```
+3000
+3000
+
 ```
 
 ### Disk Information
@@ -62,7 +90,7 @@ print("The size of my primary disk is: " + Winfo.disk.getsize())
 print("The size of my secondary disk is: " + Winfo.disk.getsize(1))
 ```
 
-- BONUS TIP! If you want to list all disks in a prettier way try this:
+- Like with the getSpeedAll, if you want to list all disks in a prettier way try this:
 
 ```Python
 import Winfo
@@ -101,7 +129,7 @@ print("My MAC Address is: " + Winfo.ethernet.macaddr())
 print("List of all Network Adapters as a Python list: " + Winfo.ethernet.listadapters())
 ```
 
-- Like with the Disklist, you can make the list returned from Winfo.ethernet.listadapters() way prettier by doing this:
+- Like with the Disklist and the getSpeedAll, you can make the list returned from Winfo.ethernet.listadapters() way prettier by doing this:
 
 ```Python
 import Winfo
