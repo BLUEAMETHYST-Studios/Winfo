@@ -63,3 +63,4 @@ from Winfo import memory
 from Winfo import motherboard
 from Winfo import software
 from Winfo import ethernet
+from Winfo import internet

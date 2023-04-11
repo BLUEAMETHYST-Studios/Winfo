@@ -155,7 +155,21 @@ Adapter 2
 Adapter 3
 
 ```
+### Internet Connection Information
 
+- Get public IP address
+- Check if you are connected to the internet
+
+```Python
+import Winfo
+
+print("My IP is " + Winfo.internet.publicIP())
+
+if Winfo.internet.isConnected():
+    print("I'm connected to the internet!")
+else:
+    print("I'm not connected to the internet :(")
+```
 ### Motherboard Information
 
 - Get Brandname of your Motherboard
