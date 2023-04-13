@@ -18,5 +18,3 @@ def isConnected():
         return False
     else:
         return True
-
-print(publicIP())
