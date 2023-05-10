@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
     
 setup(
     name="Winfo",
-    version="0.0.3.2",
+    version="0.0.4",
     author="BLUEAMETHYST Studios",
     description="Get information about your windows system",
     long_description_content_type="text/markdown",
@@ -14,7 +14,6 @@ setup(
     packages=find_packages(),
     keywords=['python', 'windows', 'util', 'information', 'system'],
     classifiers=[
-        "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Microsoft :: Windows",

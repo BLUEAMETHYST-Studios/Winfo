@@ -26,4 +26,5 @@ def getsize(index = 0):
         raise IndexError("Disk Index invalid.")
     elif size == "           \r\r":
         raise IndexError("Disk Index invalid.")
-    return int(size)
+    else:
+        return int(size)

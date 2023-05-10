@@ -32,3 +32,6 @@ def getSpeedAll():
     rawdecoded = raw.decode().strip().split('\r\n')
     speeds = [int(speed) for speed in rawdecoded[1:] if speed.strip().isdigit()]
     return speeds
+
+print(getcapacityMB())
+print(getcapacityGB())

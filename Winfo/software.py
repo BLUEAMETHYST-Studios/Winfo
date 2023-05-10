@@ -32,3 +32,9 @@ def username():
     rawdecoded = raw.decode()
     getusername = rawdecoded.replace("\n", "")
     return getusername
+
+def where():
+    raw = check_output(["wmic", "bootconfig", "get", "Caption"])
+    rawdecoded = raw.decode()
+    getpart = rawdecoded.replace("Caption", "", 1).replace("\n", "")
+    return getpart

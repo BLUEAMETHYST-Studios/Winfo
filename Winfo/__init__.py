@@ -64,3 +64,4 @@ from Winfo import motherboard
 from Winfo import software
 from Winfo import ethernet
 from Winfo import internet
+from Winfo import audio

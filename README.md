@@ -126,7 +126,7 @@ Disk 2
 import Winfo
 
 print("My MAC Address is: " + Winfo.ethernet.macaddr())
-print("List of all Network Adapters as a Python list: " + Winfo.ethernet.listadapters())
+print("List of all Network Adapters as a Python list: " + str(Winfo.ethernet.listadapters()))
 ```
 
 - Like with the Disklist and the getSpeedAll, you can make the list returned from Winfo.ethernet.listadapters() way prettier by doing this:
@@ -181,12 +181,27 @@ import Winfo
 print("My Motherboard is an " + Winfo.motherboard.getname() + " , made by " + Winfo.motherboard.getmanufacturer())
 ```
 
+### Audio Device Information
+
+- Get a list of all connected audio devices (also shows virtual devices)
+- Get a list of all the manufacturers of those
+
+```Python
+import Winfo
+
+print("All my audio devices as a Python list: " + str(Winfo.audio.listall()))
+print("And the manufacturers: "  + str(Winfo.audio.listmanufacturers()))
+```
+
+- Like all the other lists, you can make them look prettier, by doing it the same way, that was mentioned above
+
 ### Software Information
 
 - Get current Windows version
 - Get current Windows release
 - Get device name
 - Get user name
+- Get where your system is located (Partition)
 
 ```Python
 import Winfo
@@ -194,6 +209,7 @@ import Winfo
 print("I'm current running Windows " + Winfo.software.system() + " on version " + Winfo.software.version())
 print("I named my computer " + Winfo.software.devicename())
 print("I'm logged in as " + Winfo.software.username())
+print("My system partition is at " + Winfo.software.where())
 ```
 ## Questions you might have:
 

@@ -2,7 +2,7 @@ from subprocess import check_output
 
 def macaddr():
     """
-    DISCLAIMER
+    ## DISCLAIMER
     
     May not be true!
     
